@@ -12,35 +12,35 @@
 <body class="flex bg-gray-100 min-h-screen">
 
     <!-- Sidebar -->
-    <aside class="w-56 bg-neutral-900 h-screen">
+    <aside class="w-56 bg-neutral-900 min-h-screen flex flex-col justify-between">
         <div class="flex flex-col h-full">
             <div class="flex items-center justify-center py-4 mb-3 mt-5">
-                <div class="w-40 h-20 -ms-5">
-                    <img class="w-full rounded-xl object-cover" src={{asset ('logo.png')}} alt="logo">
+                <div class="w-40 h-20">
+                    <img class="w-full rounded-xl object-cover" src="{{ asset('logo.png') }}" alt="logo">
                 </div>
             </div>
             <nav class="text-white flex-1 mt-4">
                 <ul>
                     <li class="mb-2">
-                        {{-- <img src={{asset ('/icons/home-icon.png') }} alt="home-icon"> --}}
-                        {{-- <i class="fa-regular fa-house"></i> --}}
                         <a href="/" class="block py-2 px-4 hover:bg-gray-700">Beranda</a>
                     </li>
                     <li class="mb-2">
                         <a href="#" class="block py-2 px-4 hover:bg-gray-700">Cari</a>
                     </li>
                     <li class="mb-2">
-                        <a href="#" class="block py-2 px-4 hover:bg-gray-700">Radio</a></li>
+                        <a href="#" class="block py-2 px-4 hover:bg-gray-700">Radio</a>
+                    </li>
                     <li class="mb-2">
-                        <a href="#" class="block py-2 px-4 hover:bg-gray-700">Podcast</a></li>
+                        <a href="#" class="block py-2 px-4 hover:bg-gray-700">Podcast</a>
+                    </li>
                     <li class="mb-2">
-                        <a href="/admin" class="block py-2 px-4 hover:bg-gray-700">Admin</a></li>
+                        <a href="/admin" class="block py-2 px-4 hover:bg-gray-700">Admin</a>
+                    </li>
                 </ul>
             </nav>
         </div>
     </aside>
 
-    <!-- Main Content -->
     <div class="flex-1 flex flex-col overflow-hidden bg-black">
         <!-- Navbar -->
         <nav class="bg-neutral-900 p-4 mx-3 rounded-md">
@@ -66,26 +66,46 @@
         </nav>
 
         <!-- Main Content -->
-        <main class="flex-1 overflow-y-auto p-6 bg-black">
-            <!-- Radio Player -->
-            <div class="max-w-lg mx-auto bg-white rounded-lg overflow-hidden shadow-lg mb-6">
-                <img class="w-full h-64 object-cover" src={{asset ('zeno-logo.png') }} alt="Album Art">
-                <div class="p-4">
-                    <h3 class="text-lg font-bold mb-2">Zeno Radio</h3>
-                    <p class="text-gray-600">Various Artists</p>
-                    <div class="flex items-center mt-4">
-                        <button id="playPauseButton" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
-                            Play
-                        </button>
-                        <div class="flex-1 ml-4">
-                            <label for="">Volume Control</label>
-                            <input type="range" id="volumeControl" min="0" max="1" step="0.01" class="w-full bg-gray-300 h-1 rounded-lg overflow-hidden appearance-none">
-                        </div>
-                    </div>
+        <main class="max-w-full mt-3 mx-3 p-5 bg-neutral-900 text-white rounded-lg shadow overflow-hidden">
+            <section class="mb-6">
+                <h2 class="text-lg font-semibold mb-5">Tabel CRUD Admin</h2>
+                <div class="max-w-4xl mx-auto bg-neutral-700 shadow overflow-hidden">
+                    <table class="min-w-full bg-neutral-700">
+                        <thead class="text-white">
+                            <tr>
+                                <th class="w-10 py-3 px-4 text-left font-medium uppercase border-b border-neutral-800">No</th>
+                                <th class="py-3 px-4 text-left font-medium uppercase border-b border-neutral-800">Nama Layanan</th>
+                                <th class="py-3 px-4 text-left font-medium uppercase border-b border-neutral-800">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-neutral-800">
+                            <tr>
+                                <td class="w-10 py-3 px-4 whitespace-nowrap border-b border-neutral-800">1.</td>
+                                <td class="py-3 px-4 whitespace-nowrap border-b border-neutral-800">Radio</td>
+                                <td class="py-3 px-4 whitespace-nowrap border-b border-neutral-800">
+                                    <button class="bg-yellow-300 hover:bg-yellow-500 text-black font-bold py-1 px-3 rounded">Lihat</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-10 py-3 px-4 whitespace-nowrap border-b border-neutral-800">2.</td>
+                                <td class="py-3 px-4 whitespace-nowrap border-b border-neutral-800">Podcast</td>
+                                <td class="py-3 px-4 whitespace-nowrap border-b border-neutral-800">
+                                    <button class="bg-yellow-300 hover:bg-yellow-500 text-black font-bold py-1 px-3 rounded">Lihat</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-10 py-3 px-4 whitespace-nowrap border-b border-neutral-800">3.</td>
+                                <td class="py-3 px-4 whitespace-nowrap border-b border-neutral-800">Berita</td>
+                                <td class="py-3 px-4 whitespace-nowrap border-b border-neutral-800">
+                                    <button class="bg-yellow-300 hover:bg-yellow-500 text-black font-bold py-1 px-3 rounded">Lihat</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-            </div>
+            </section>
         </main>
-    </div>
+        
 
     <!-- JavaScript untuk Pemutar Radio -->
     <script>
