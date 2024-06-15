@@ -34,10 +34,10 @@
                         <a href="/podcast" class="block py-2 px-4 hover:bg-gray-700">Podcast</a>
                     </li>
                     <li class="mb-2">
-                        <a href="/berita" class="block py-2 px-4 hover:bg-gray-700">Berita</a>
+                        <a href="/berita" class="block py-2 px-4 hover:bg-gray-700 {{ request()->is('berita') ? 'bg-yellow-300 text-black' : '' }}">Berita</a>
                     </li>
                     <li class="mb-2">
-                        <a href="/admin" class="block py-2 px-4 hover:bg-gray-700 {{ request()->is('admin') ? 'bg-yellow-300 text-black' : '' }}">Admin</a>
+                        <a href="/admin" class="block py-2 px-4 hover:bg-gray-700">Admin</a>
                     </li>
                 </ul>
             </nav>
@@ -68,46 +68,51 @@
             </div>
         </nav>
 
-        <!-- Main Content -->
-        <main class="max-w-full mt-3 mx-3 p-5 bg-neutral-900 text-white rounded-lg shadow overflow-hidden">
-            <section class="mb-6">
-                <h2 class="text-lg font-semibold mb-5">Tabel CRUD Admin</h2>
-                <div class="max-w-4xl mx-auto bg-neutral-700 shadow overflow-hidden">
-                    <table class="min-w-full bg-neutral-700">
-                        <thead class="text-white">
-                            <tr>
-                                <th class="w-10 py-3 px-4 text-left font-medium uppercase border-b border-neutral-800">No</th>
-                                <th class="py-3 px-4 text-left font-medium uppercase border-b border-neutral-800">Nama Layanan</th>
-                                <th class="py-3 px-4 text-left font-medium uppercase border-b border-neutral-800">Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-neutral-800">
-                            <tr>
-                                <td class="w-10 py-3 px-4 whitespace-nowrap border-b border-neutral-800">1.</td>
-                                <td class="py-3 px-4 whitespace-nowrap border-b border-neutral-800">Radio</td>
-                                <td class="py-3 px-4 whitespace-nowrap border-b border-neutral-800">
-                                    <button class="bg-yellow-300 hover:bg-yellow-500 text-black font-bold py-1 px-3 rounded">Lihat</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="w-10 py-3 px-4 whitespace-nowrap border-b border-neutral-800">2.</td>
-                                <td class="py-3 px-4 whitespace-nowrap border-b border-neutral-800">Podcast</td>
-                                <td class="py-3 px-4 whitespace-nowrap border-b border-neutral-800">
-                                    <button class="bg-yellow-300 hover:bg-yellow-500 text-black font-bold py-1 px-3 rounded">Lihat</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="w-10 py-3 px-4 whitespace-nowrap border-b border-neutral-800">3.</td>
-                                <td class="py-3 px-4 whitespace-nowrap border-b border-neutral-800">Berita</td>
-                                <td class="py-3 px-4 whitespace-nowrap border-b border-neutral-800">
-                                    <button class="bg-yellow-300 hover:bg-yellow-500 text-black font-bold py-1 px-3 rounded">Lihat</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+        {{-- Main Content --}}
+        <main class="container mx-auto mt-2 p-4">
+            <section class="grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1">
+                <!-- Berita 1 -->
+                <div class="bg-neutral-700 text-white rounded-lg overflow-hidden shadow-lg flex">
+                    <a href="/berita" class="flex-shrink-0 w-1/5">
+                        <img class="w-full h-full object-cover max-w-xs" src="{{ asset ('images/berita-logo.png') }}" alt="News Image">
+                    </a>
+                    <div class="p-6 flex flex-col w-full">
+                        <h3 class="text-xl font-bold mb-4">Judul Berita Pertama</h3>
+                        <p class="text-gray-300 mb-4">Deskripsi singkat dari berita pertama. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        <div class="mt-auto">
+                            <a href="/berita" class="w-full bg-yellow-300 hover:bg-yellow-500 text-black font-semibold py-2 px-4 rounded">Baca Selengkapnya...</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Berita 2 -->
+                <div class="bg-neutral-700 text-white rounded-lg overflow-hidden shadow-lg flex">
+                    <a href="/berita" class="flex-shrink-0 w-1/5">
+                        <img class="w-full h-full object-cover max-w-xs" src="{{ asset ('images/berita-logo.png') }}" alt="News Image">
+                    </a>
+                    <div class="p-6 flex flex-col w-full">
+                        <h3 class="text-xl font-bold mb-4">Judul Berita Kedua</h3>
+                        <p class="text-gray-300 mb-4">Deskripsi singkat dari berita kedua. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        <div class="mt-auto">
+                            <a href="/berita" class="w-full bg-yellow-300 hover:bg-yellow-500 text-black font-semibold py-2 px-4 rounded">Baca Selengkapnya...</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Berita 3 -->
+                <div class="bg-neutral-700 text-white rounded-lg overflow-hidden shadow-lg flex">
+                    <a href="/berita" class="flex-shrink-0 w-1/5">
+                        <img class="w-full h-full object-cover max-w-xs" src="{{ asset ('images/berita-logo.png') }}" alt="News Image">
+                    </a>
+                    <div class="p-6 flex flex-col w-full">
+                        <h3 class="text-xl font-bold mb-4">Judul Berita Ketiga</h3>
+                        <p class="text-gray-300 mb-4">Deskripsi singkat dari berita ketiga. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        <div class="mt-auto">
+                            <a href="/berita" class="w-full bg-yellow-300 hover:bg-yellow-500 text-black font-semibold py-2 px-4 rounded">Baca Selengkapnya...</a>
+                        </div>
+                    </div>
                 </div>
             </section>
-        </main>
+        </main>   
     </div>
 
     <script>
