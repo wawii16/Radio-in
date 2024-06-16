@@ -15,30 +15,14 @@
     <x-Sidebar></x-Sidebar>
 
     <!-- Main Content -->
-    <div class="flex-1 flex flex-col overflow-hidden bg-black">
+    <div id="main-content" class="flex-1 flex flex-col overflow-hidden bg-black transition-all duration-300 ml-0">
+        {{-- Navbar --}}
         <x-Navbar></x-Navbar>
 
-        <!-- Main Content -->
+        <!-- Radio Player -->
         @auth
         <main class="flex-1 overflow-y-auto p-6 bg-black">
             <div class="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-                <!-- Player 1 -->
-                <!-- <div class="bg-neutral-700 text-white rounded-lg overflow-hidden shadow-lg">
-                    <img class="w-full h-64 object-cover" src="{{ asset ('images/zeno-logo.png') }}" alt="Album Art">
-                    <div class="p-4">
-                        <h3 class="text-lg font-bold mb-2">Zeno Radio</h3>
-                        <p class="">Various Artists</p>
-                        <div class="flex items-center mt-4">
-                            <button id="playPauseButton" class="bg-yellow-300 hover:bg-yellow-500 text-black font-bold py-2 px-4 rounded">
-                                Play
-                            </button>
-                            <div class="flex-1 ml-4">
-                                <label for="volumeControl" class="text-white">Volume Control</label>
-                                <input type="range" id="volumeControl" min="0" max="1" step="0.01" class="w-full bg-gray-300 h-1 rounded-lg overflow-hidden appearance-none">
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
                 @foreach ($radios as $radio)
                 <div class="bg-neutral-700 text-white rounded-lg overflow-hidden shadow-lg">
                     <img class="w-full h-64 object-cover" src="{{ url('/') }}/uploads/{{ $radio->photo }}" alt="Album Art">

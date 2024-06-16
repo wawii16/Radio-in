@@ -11,11 +11,12 @@ use App\Models\Radio;
 Route::get('/', function () {
     return view('index');
 });
+
 Route::get('/berita', function () {
     $beritas = Berita::get();
-
     return view('layanan/berita', compact('beritas'));
 });
+
 Route::get('/radio', function () {
     $radios = Radio::get();
     return view('layanan/radio', compact('radios'));
@@ -23,11 +24,12 @@ Route::get('/radio', function () {
 
 Route::get('/podcast', function () {
     $podcasts = Podcast::get();
-
     return view('layanan/podcast', compact('podcasts'));
 });
 
-
+Route::get('/about', function () {
+    return view('about');
+});
 
 Route::prefix('admin')->group(function () {
     Route::prefix('radio')->group(function () {

@@ -11,12 +11,12 @@
 
 <body class="flex bg-gray-100 min-h-screen">
 
-    <x-Sidebar></x-Sidebar>
+    {{-- Sidebar Component --}}
+    <x-sidebar></x-sidebar>
 
-    <div class="flex-1 flex flex-col overflow-hidden bg-black">
+    <div id="main-content" class="flex-1 flex flex-col overflow-hidden bg-black transition-all duration-300 ml-0">
         <!-- Navbar -->
         <x-Navbar></x-Navbar>
-
 
         <!-- Main Content -->
         <main class="max-w-full mt-3 mx-3 p-5 bg-neutral-900 text-white rounded-lg shadow overflow-hidden">
