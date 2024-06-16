@@ -15,17 +15,15 @@
     <x-Sidebar></x-Sidebar>
 
     <!-- Main Content -->
-    <div class="flex-1 flex flex-col overflow-hidden bg-black">
+    <div id="main-content" class="flex-1 flex flex-col overflow-hidden bg-black transition-all duration-300 ml-0">
         <!-- Navbar -->
         <x-Navbar></x-Navbar>
 
-        <!-- Main Content -->
+        <!-- Podcast Player -->
         @auth
         <main class="flex-1 overflow-y-auto p-6 bg-black">
-            <!-- Radio Player -->
             <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
 
-                <!-- Player 1 -->
                 @foreach ($podcasts as $podcast)
 
                 <div class="max-w-lg mx-auto bg-neutral-700 text-white rounded-lg overflow-hidden shadow-lg">

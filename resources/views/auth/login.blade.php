@@ -9,9 +9,15 @@
 </head>
 
 <body class="bg-black min-h-screen flex items-center justify-center">
-    <div class="bg-neutral-900 text-white rounded-lg shadow-lg p-8 max-w-5xl w-full flex gap-20">
+    <div class="bg-neutral-900 text-white rounded-lg shadow-lg p-8 max-w-5xl w-full flex flex-col md:flex-row gap-20">
+        <!-- Logo and Description (Above Form on Mobile) -->
+        <div class="w-full md:w-1/2 p-4 flex flex-col items-center justify-center md:order-2">
+            <img class="w-full mb-4 rounded-full object-cover" src="{{ asset('/images/logo.png') }}" alt="Website Logo">
+            <p class="text-center text-xl font-bold text-yellow-200">Selamat Mendengarkan dan Menikmati Streaming Radio dan Podcast!</p>
+        </div>
+
         <!-- Form Login -->
-        <div class="w-1/2 p-4">
+        <div class="w-full md:w-1/2 p-4 md:order-1">
             <h2 class="text-2xl font-bold mb-6 text-center">Login</h2>
             <form action="<?= url('login_post')  ?>" method="POST">
                 @csrf
@@ -26,11 +32,9 @@
                 </div>
                 @endif
 
-
                 <div class="mb-4">
                     <label for="email" class="block text-sm font-medium mb-2">Email</label>
                     <input type="email" id="email" name="email" value="<?= old('email') ?>" class="w-full p-2 border border-neutral-700 rounded-lg bg-neutral-700 focus:outline-none focus:ring-2 focus:ring-neutral-400 focus:border-transparent" required>
-
                 </div>
                 <div class="mb-6">
                     <label for="password" class="block text-sm font-medium mb-2">Password</label>
@@ -48,11 +52,6 @@
             <p class="text-center text-sm mt-6">
                 Don't have an account? <a href="/regist" class="text-yellow-300 hover:underline">Sign Up</a>
             </p>
-        </div>
-        <!-- Logo and Description -->
-        <div class="w-1/2 p-4 flex flex-col items-center justify-center">
-            <img class="w-full mb-4 rounded-3xl object-cover" src="{{ asset('/images/logo.png') }}" alt="Website Logo">
-            <p class="text-center text-xl font-bold text-yellow-300">Selamat Mendengarkan dan Menikmati Streaming Radio dan Podcast!</p>
         </div>
     </div>
 </body>

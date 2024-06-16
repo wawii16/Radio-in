@@ -14,7 +14,7 @@
     <!-- Sidebar -->
     <x-Sidebar></x-Sidebar>
 
-    <div class="flex-1 flex flex-col overflow-hidden bg-black">
+    <div id="main-content" class="flex-1 flex flex-col overflow-hidden bg-black transition-all duration-300 ml-0">
         <x-Navbar></x-Navbar>
 
         {{-- Main Content --}}

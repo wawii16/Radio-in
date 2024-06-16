@@ -11,9 +11,10 @@
 
 <body class="flex bg-gray-100 min-h-screen">
 
+    {{-- Sidebar Component --}}
     <x-Sidebar></x-Sidebar>
 
-    <div class="flex-1 flex flex-col overflow-hidden bg-black">
+    <div id="main-content" class="flex-1 flex flex-col overflow-hidden bg-black transition-all duration-300 ml-0">
         <!-- Navbar -->
         <x-Navbar></x-Navbar>
 
@@ -137,13 +138,8 @@
             </section>
         </main>
     </div>
-
+    
     <script src={{asset ('js/app.js')}}></script>
-
-
-    <script>
-
-    </script>
 
 </body>
 
