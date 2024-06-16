@@ -36,21 +36,21 @@
                                 <td class="w-10 py-3 px-4 whitespace-nowrap border-b border-neutral-800">1.</td>
                                 <td class="py-3 px-4 whitespace-nowrap border-b border-neutral-800">Radio</td>
                                 <td class="py-3 px-4 whitespace-nowrap border-b border-neutral-800">
-                                    <button class="bg-yellow-300 hover:bg-yellow-500 text-black font-bold py-1 px-3 rounded">Lihat</button>
+                                    <a href="admin/radio" class="bg-yellow-300 hover:bg-yellow-500 text-black font-bold py-1 px-3 rounded">Lihat</a>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="w-10 py-3 px-4 whitespace-nowrap border-b border-neutral-800">2.</td>
                                 <td class="py-3 px-4 whitespace-nowrap border-b border-neutral-800">Podcast</td>
                                 <td class="py-3 px-4 whitespace-nowrap border-b border-neutral-800">
-                                    <button class="bg-yellow-300 hover:bg-yellow-500 text-black font-bold py-1 px-3 rounded">Lihat</button>
+                                    <a href="admin/podcast" class="bg-yellow-300 hover:bg-yellow-500 text-black font-bold py-1 px-3 rounded">Lihat</a>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="w-10 py-3 px-4 whitespace-nowrap border-b border-neutral-800">3.</td>
                                 <td class="py-3 px-4 whitespace-nowrap border-b border-neutral-800">Berita</td>
                                 <td class="py-3 px-4 whitespace-nowrap border-b border-neutral-800">
-                                    <button class="bg-yellow-300 hover:bg-yellow-500 text-black font-bold py-1 px-3 rounded">Lihat</button>
+                                    <a href="admin/berita" class="bg-yellow-300 hover:bg-yellow-500 text-black font-bold py-1 px-3 rounded">Lihat</a>
                                 </td>
                             </tr>
                         </tbody>
@@ -60,26 +60,6 @@
         </main>
 
 
-        <!-- JavaScript untuk Pemutar Radio -->
-        <script>
-            const playPauseButton = document.getElementById('playPauseButton');
-            const radioPlayer = new Audio('https://stream.zeno.fm/dgtzdngnd0huv');
-            const volumeControl = document.getElementById('volumeControl');
-
-            playPauseButton.addEventListener('click', () => {
-                if (radioPlayer.paused) {
-                    radioPlayer.play();
-                    playPauseButton.textContent = 'Pause';
-                } else {
-                    radioPlayer.pause();
-                    playPauseButton.textContent = 'Play';
-                }
-            });
-
-            volumeControl.addEventListener('input', () => {
-                radioPlayer.volume = volumeControl.value;
-            });
-        </script>
 </body>
 
 </html>
