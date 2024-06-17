@@ -4,10 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Navbar and Sidebar with Tailwind CSS</title>
+    <title>Admin - Podcast</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
-
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" type="text/css">
 </head>
 
@@ -33,15 +32,15 @@
         <main class="max-w-full mt-3 mx-3 p-5 bg-neutral-900 text-white rounded-lg shadow overflow-hidden">
             <section class="mb-6">
                 <h2 class="text-lg font-semibold mb-5">Daftar Podcast</h2>
-                <div class="max-w-4xl mx-auto bg-neutral-700 shadow overflow-hidden">
+                <div class="overflow-x-auto">
                     <table class="min-w-full bg-neutral-700">
                         <thead class="text-white">
                             <tr>
-                                <th class="w-10 py-3 px-4 text-left font-medium uppercase border-b border-neutral-800">No</th>
-                                <th class="py-3 px-4 text-left font-medium uppercase border-b border-neutral-800">Nama Podcast</th>
-                                <th class="py-3 px-4 text-left font-medium uppercase border-b border-neutral-800">Artis</th>
-                                <th class="py-3 px-4 text-center font-medium uppercase border-b border-neutral-800">Cover</th>
-                                <th class="py-3 px-4 text-center font-medium uppercase border-b border-neutral-800">Aksi</th>
+                                <th class="w-10 py-1 px-2 text-left text-xs sm:text-sm font-medium uppercase border-b border-neutral-800">No</th>
+                                <th class="py-1 px-2 text-left text-xs sm:text-sm font-medium uppercase border-b border-neutral-800">Nama Podcast</th>
+                                <th class="py-1 px-2 text-left text-xs sm:text-sm font-medium uppercase border-b border-neutral-800">Artis</th>
+                                <th class="py-1 px-2 text-center text-xs sm:text-sm font-medium uppercase border-b border-neutral-800">Cover</th>
+                                <th class="py-1 px-2 text-center text-xs sm:text-sm font-medium uppercase border-b border-neutral-800">Aksi</th>
                             </tr>
                         </thead>
 
@@ -50,21 +49,18 @@
                             $counter = 1; // Inisialisasi variabel counter
                             @endphp
                             @foreach ($podcasts as $podcast)
-
                             <tr>
-                                <td class="w-10 py-3 px-4 whitespace-nowrap border-b border-neutral-800">{{ $counter++ }}</td>
-                                <td class="py-3 px-4 whitespace-nowrap border-b border-neutral-800">{{ $podcast->name }}</td>
-                                <td class="py-3 px-4 whitespace-nowrap border-b border-neutral-800">{{ $podcast->artis }}</td>
-                                <td class="py-3 px-4 whitespace-nowrap border-b border-neutral-800 text-center"> <img class="w-20 h-20" src="{{ url('/') }}/uploads/{{ $podcast->photo }}" alt="Gambar">
+                                <td class="w-10 py-1 px-2 text-xs sm:text-sm whitespace-nowrap border-b border-neutral-800">{{ $counter++ }}</td>
+                                <td class="py-1 px-2 text-xs sm:text-sm whitespace-nowrap border-b border-neutral-800">{{ $podcast->name }}</td>
+                                <td class="py-1 px-2 text-xs sm:text-sm whitespace-nowrap border-b border-neutral-800">{{ $podcast->artis }}</td>
+                                <td class="py-1 px-2 text-xs sm:text-sm whitespace-nowrap border-b border-neutral-800 text-center">
+                                    <img class="w-10 h-10 sm:w-20 sm:h-20 object-cover" src="{{ url('/') }}/uploads/{{ $podcast->photo }}" alt="Gambar">
                                 </td>
-                                <td class="py-3 px-4 whitespace-nowrap border-b border-neutral-800 text-center">
-                                    <a href="{{ route('admin.edit_podcast', ['id' => $podcast->id]) }}" class="bg-blue-600 hover:bg-blue-800 text-white font-bold py-1 px-3 rounded">Lihat</a>
-
+                                <td class="py-1 px-2 text-xs sm:text-sm whitespace-nowrap border-b border-neutral-800 text-center">
+                                    <a href="{{ route('admin.edit_podcast', ['id' => $podcast->id]) }}" class="bg-blue-600 hover:bg-blue-800 text-white font-bold py-1 px-2 sm:py-1 sm:px-3 rounded">Lihat</a>
                                 </td>
-
                             </tr>
                             @endforeach
-
                         </tbody>
                     </table>
                 </div>
