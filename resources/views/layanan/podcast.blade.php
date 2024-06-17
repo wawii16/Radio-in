@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Navbar and Sidebar with Tailwind CSS</title>
+    <title>Podcast</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" type="text/css">
 </head>
@@ -22,10 +22,9 @@
         <!-- Podcast Player -->
         @auth
         <main class="flex-1 overflow-y-auto p-6 bg-black">
-            <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-
+            <h2 class="text-2xl font-bold text-white mb-6 text-center">Saluran Podcast</h2>
+            <section class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 @foreach ($podcasts as $podcast)
-
                 <div class="max-w-lg mx-auto bg-neutral-700 text-white rounded-lg overflow-hidden shadow-lg">
                     <img class="w-full h-64 object-cover" src="{{ url('/') }}/uploads/{{ $podcast->photo }}" alt="Album Art">
                     <div class="p-4">
@@ -42,11 +41,8 @@
                         </div>
                     </div>
                 </div>
-
                 @endforeach
-
-
-            </div>
+            </section>
         </main>
         @else
         <p class="text-white mx-auto my-10">Anda Harus Login</p>
@@ -55,7 +51,7 @@
 
     </div>
 
-    <!-- JavaScript untuk Pemutar Radio -->
+    <!-- JavaScript untuk Pemutar Podcast -->
     <script src={{asset ('js/app.js')}}></script>
 
 </body>

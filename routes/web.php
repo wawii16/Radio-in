@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\HomeController;
 use App\Http\Middleware\HasRoleAdminMiddleware;
 use App\Models\Berita;
 use App\Models\Podcast;
@@ -11,6 +12,8 @@ use App\Models\Radio;
 Route::get('/', function () {
     return view('index');
 });
+
+Route::get('/', [HomeController::class, 'index'])->name('index');
 
 Route::get('/berita', function () {
     $beritas = Berita::get();
