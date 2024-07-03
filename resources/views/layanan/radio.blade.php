@@ -15,23 +15,23 @@
     <x-Sidebar></x-Sidebar>
 
     <!-- Main Content -->
-    <div id="main-content" class="flex-1 flex flex-col overflow-hidden bg-black transition-all duration-300 ml-0">
+    <div id="main-content" class="flex-1 flex flex-col overflow-hidden bg-white transition-all duration-300 ml-0">
         {{-- Navbar --}}
         <x-Navbar></x-Navbar>
 
         <!-- Radio Player -->
         @auth
-        <main class="flex-1 overflow-y-auto p-6 bg-black">
-            <h2 class="text-2xl font-bold text-white mb-6 text-center">Saluran Radio</h2>
+        <main class="flex-1 overflow-y-auto p-6 bg-white">
+            <h2 class="text-2xl font-bold text-emerald-700 mb-6 text-center">Saluran Radio</h2>
             <div class="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                 @foreach ($radios as $radio)
-                <div class="bg-neutral-700 text-white rounded-lg overflow-hidden shadow-lg">
+                <div class="bg-emerald-700 text-white border-2 border-emerald-700 rounded-lg overflow-hidden shadow-lg">
                     <img class="w-full h-64 object-cover" src="{{ url('/') }}/uploads/{{ $radio->photo }}" alt="Album Art">
                     <div class="p-4">
                         <h3 class="text-lg font-bold mb-2">{{ $radio->name }}</h3>
                         <p>{{ $radio->artis }}</p>
                         <div class="flex items-center mt-4">
-                            <button id="playPauseButton{{ $radio->id }}" class="bg-yellow-300 hover:bg-yellow-500 text-black font-bold py-2 px-4 rounded" data-url="{{ $radio->url }}">
+                            <button id="playPauseButton{{ $radio->id }}" class="bg-emerald-900 hover:bg-emerald-800 text-white font-bold py-2 px-4 rounded-md" data-url="{{ $radio->url }}">
                                 Play
                             </button>
                             <div class="flex-1 ml-4">
@@ -45,7 +45,7 @@
             </div>
         </main>
         @else
-        <p class="text-white mx-auto my-10">Anda Harus Login</p>
+        <p class="text-emerald-700 font-bold mx-auto my-10">Anda Harus Login</p>
         @endauth
     </div>
 

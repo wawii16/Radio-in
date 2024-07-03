@@ -23,6 +23,7 @@ class AdminController extends Controller
 
         return view('admin/radio', compact('radios'));
     }
+
     public function store_radio(Request $request)
     {
         // dd($request->all());
@@ -44,8 +45,6 @@ class AdminController extends Controller
 
         $file->move($filePath, $file_name);
         $radio->photo = $file_name;
-
-
 
         $radio->save();
         return redirect('admin/radio');
@@ -110,6 +109,7 @@ class AdminController extends Controller
 
         return redirect('admin/radio');
     }
+
     public function berita()
     {
 
@@ -119,6 +119,7 @@ class AdminController extends Controller
 
         return view('admin/berita', compact('beritas'));
     }
+
     public function store_berita(Request $request)
     {
         // dd($request->all());

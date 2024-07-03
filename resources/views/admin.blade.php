@@ -14,43 +14,44 @@
     {{-- Sidebar Component --}}
     <x-sidebar></x-sidebar>
 
-    <div id="main-content" class="flex-1 flex flex-col overflow-hidden bg-black transition-all duration-300 ml-0">
+    <div id="main-content" class="flex-1 flex flex-col overflow-hidden bg-white transition-all duration-300 ml-0">
         <!-- Navbar -->
         <x-Navbar></x-Navbar>
 
         <!-- Main Content -->
-        <main class="max-w-full mt-3 mx-3 p-5 bg-neutral-900 text-white rounded-lg shadow overflow-hidden">
+        <h2 class="text-2xl text-emerald-700 font-bold mt-5 mb-5 mx-auto">Dashboard Admin</h2>
+        <main class="max-w-full mt-3 mx-3 p-5 bg-gray-100 text-white rounded-lg shadow overflow-hidden">
             <section class="mb-6">
-                <h2 class="text-lg font-semibold mb-5">Tabel CRUD Admin</h2>
                 <div class="overflow-x-auto">
-                    <table class="min-w-full bg-neutral-700">
+                    <h2 class="text-md text-emerald-700 font-bold mb-5">Tabel Manajemen Konten</h2>
+                    <table class="min-w-full bg-emerald-700 rounded">
                         <thead class="text-white">
                             <tr>
-                                <th class="w-10 py-1 px-2 text-left text-xs sm:text-sm font-medium uppercase border-b border-neutral-800">No</th>
-                                <th class="py-1 px-2 text-left text-xs sm:text-sm font-medium uppercase border-b border-neutral-800">Nama Layanan</th>
-                                <th class="py-1 px-2 text-left text-xs sm:text-sm font-medium uppercase border-b border-neutral-800">Aksi</th>
+                                <th class="w-10 py-1 px-2 text-left text-xs sm:text-sm font-medium uppercase border-b border-white">No</th>
+                                <th class="py-1 px-2 text-left text-xs sm:text-sm font-medium uppercase border-b border-white">Nama Layanan</th>
+                                <th class="py-1 px-2 text-left text-xs sm:text-sm font-medium uppercase border-b border-white">Aksi</th>
                             </tr>
                         </thead>
-                        <tbody class="divide-y divide-neutral-800">
+                        <tbody class="divide-y divide-white">
                             <tr>
-                                <td class="w-10 py-1 px-2 text-xs sm:text-sm whitespace-nowrap border-b border-neutral-800">1.</td>
-                                <td class="py-2 px-2 text-xs sm:text-sm whitespace-nowrap border-b border-neutral-800">Radio</td>
-                                <td class="py-2 px-2 text-xs sm:text-sm whitespace-nowrap border-b border-neutral-800">
-                                    <a href="admin/radio" class="bg-yellow-300 hover:bg-yellow-500 text-black font-bold py-1 px-2 sm:py-1 sm:px-3 rounded">Lihat</a>
+                                <td class="w-10 py-1 px-2 text-xs sm:text-sm whitespace-nowrap border-b border-white">1.</td>
+                                <td class="py-2 px-2 text-xs sm:text-sm whitespace-nowrap border-b border-white">Radio</td>
+                                <td class="py-2 px-2 text-xs sm:text-sm whitespace-nowrap border-b border-white">
+                                    <a href="admin/radio" class="bg-emerald-600 hover:bg-emerald-800 text-white font-bold py-1 px-2 sm:py-1 sm:px-3 rounded">Lihat</a>
                                 </td>
                             </tr>
                             <tr>
-                                <td class="w-10 py-1 px-2 text-xs sm:text-sm whitespace-nowrap border-b border-neutral-800">2.</td>
-                                <td class="py-2 px-2 text-xs sm:text-sm whitespace-nowrap border-b border-neutral-800">Podcast</td>
-                                <td class="py-2 px-2 text-xs sm:text-sm whitespace-nowrap border-b border-neutral-800">
-                                    <a href="admin/podcast" class="bg-yellow-300 hover:bg-yellow-500 text-black font-bold py-1 px-2 sm:py-1 sm:px-3 rounded">Lihat</a>
+                                <td class="w-10 py-1 px-2 text-xs sm:text-sm whitespace-nowrap border-b border-white">2.</td>
+                                <td class="py-2 px-2 text-xs sm:text-sm whitespace-nowrap border-b border-white">Podcast</td>
+                                <td class="py-2 px-2 text-xs sm:text-sm whitespace-nowrap border-b border-white">
+                                    <a href="admin/podcast" class="bg-emerald-600 hover:bg-emerald-800 text-white font-bold py-1 px-2 sm:py-1 sm:px-3 rounded">Lihat</a>
                                 </td>
                             </tr>
                             <tr>
-                                <td class="w-10 py-1 px-2 text-xs sm:text-sm whitespace-nowrap border-b border-neutral-800">3.</td>
-                                <td class="py-2 px-2 text-xs sm:text-sm whitespace-nowrap border-b border-neutral-800">Berita</td>
-                                <td class="py-2 px-2 text-xs sm:text-sm whitespace-nowrap border-b border-neutral-800">
-                                    <a href="admin/berita" class="bg-yellow-300 hover:bg-yellow-500 text-black font-bold py-1 px-2 sm:py-1 sm:px-3 rounded">Lihat</a>
+                                <td class="w-10 py-1 px-2 text-xs sm:text-sm whitespace-nowrap border-b border-white">3.</td>
+                                <td class="py-2 px-2 text-xs sm:text-sm whitespace-nowrap border-b border-white">Berita</td>
+                                <td class="py-2 px-2 text-xs sm:text-sm whitespace-nowrap border-b border-white">
+                                    <a href="admin/berita" class="bg-emerald-600 hover:bg-emerald-800 text-white font-bold py-1 px-2 sm:py-1 sm:px-3 rounded">Lihat</a>
                                 </td>
                             </tr>
                         </tbody>

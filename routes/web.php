@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SearchController;
 use App\Http\Middleware\HasRoleAdminMiddleware;
 use App\Models\Berita;
 use App\Models\Podcast;
@@ -34,6 +35,8 @@ Route::get('/about', function () {
     return view('about');
 });
 
+Route::get('/search', [SearchController::class, 'search']);
+
 Route::prefix('admin')->group(function () {
     Route::prefix('radio')->group(function () {
 
@@ -59,9 +62,6 @@ Route::prefix('admin')->group(function () {
         Route::delete('/{id}', [AdminController::class, 'deletePodcast'])->name('podcastDestroy');
     });
 });
-
-
-
 
 Route::get('/admin', function () {
     return view('admin');
