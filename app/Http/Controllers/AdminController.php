@@ -6,14 +6,62 @@ use App\Models\Berita;
 use App\Models\Podcast;
 use Illuminate\Http\Request;
 use App\Models\Radio;
+use App\Models\User;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
 
 use Str;
-use Hash;
 use Auth;
 
 class AdminController extends Controller
 {
+    // Method untuk menampilkan halaman admin dengan tabel user
+    public function indexUsers()
+    {
+        $users = User::where('usertype', '!=', 'admin')->get();
+        return view('admin', compact('users'));
+    }
+
+    // Method untuk menampilkan modals update dan delete user
+    public function userModals($id)
+    {
+        $user = User::findOrFail($id);
+        return view('admin.edit.user-modals', compact('user'));
+    }
+
+    // Method untuk update user
+    public function updateUser(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email,' . $id,
+            'password' => 'nullable|string|min:8|confirmed',
+        ]);
+
+        $user->name = $validatedData['name'];
+        $user->email = $validatedData['email'];
+
+        if (!empty($validatedData['password'])) {
+            $user->password = Hash::make($validatedData['password']);
+        }
+
+        $user->save();
+
+        return redirect()->route('admin')->with('success', 'User updated successfully.');
+    }
+
+
+    // Method untuk delete user
+    public function deleteUser($id)
+    {
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        return redirect()->route('admin')->with('success', 'User deleted successfully.');
+    }
+
     public function radio()
     {
 

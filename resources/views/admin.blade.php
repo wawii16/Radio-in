@@ -19,6 +19,7 @@
         <x-Navbar></x-Navbar>
 
         <!-- Main Content -->
+        {{-- Tabel Manajemen Konten --}}
         <h2 class="text-2xl text-emerald-700 font-bold mt-5 mb-5 mx-auto">Dashboard Admin</h2>
         <main class="max-w-full mt-3 mx-3 p-5 bg-gray-100 text-white rounded-lg shadow overflow-hidden">
             <section class="mb-6">
@@ -58,6 +59,37 @@
                     </table>
                 </div>
             </section>
+
+            {{-- Tabel Manajemen User --}}
+            <section class="mt-6">
+                <div class="overflow-x-auto">
+                    <h2 class="text-md text-emerald-700 font-bold mb-5">Tabel Manajemen User</h2>
+                    <table class="min-w-full bg-emerald-700 rounded">
+                        <thead class="text-white">
+                            <tr>
+                                <th class="w-10 py-2 px-2 text-left text-xs sm:text-sm font-medium uppercase border-b border-white">No</th>
+                                <th class="py-2 px-2 text-left text-xs sm:text-sm font-medium uppercase border-b border-white">Name</th>
+                                <th class="py-2 px-2 text-left text-xs sm:text-sm font-medium uppercase border-b border-white">Email</th>
+                                <th class="py-2 px-2 text-left text-xs sm:text-sm font-medium uppercase border-b border-white">User Type</th>
+                                <th class="py-2 px-2 text-left text-xs sm:text-sm font-medium uppercase border-b border-white">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-white">
+                            @foreach ($users as $user)
+                            <tr>
+                                <td class="w-10 py-2 px-2 text-xs sm:text-sm whitespace-nowrap border-b border-white">{{ $loop->iteration }}</td>
+                                <td class="py-2 px-2 text-xs sm:text-sm whitespace-nowrap border-b border-white">{{ $user->name }}</td>
+                                <td class="py-2 px-2 text-xs sm:text-sm whitespace-nowrap border-b border-white">{{ $user->email }}</td>
+                                <td class="py-2 px-2 text-xs sm:text-sm whitespace-nowrap border-b border-white">{{ ucfirst($user->usertype) }}</td>
+                                <td class="py-2 px-2 text-xs sm:text-sm whitespace-nowrap border-b border-white">
+                                    <a href="{{ route('admin.edit_user_modals', ['id' => $user->id]) }}" class="bg-blue-600 hover:bg-blue-800 text-white font-bold py-1 px-2 sm:py-1 sm:px-3 rounded">Edit</a>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </section>            
         </main>
     </div>
 </body>
