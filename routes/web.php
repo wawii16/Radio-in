@@ -5,6 +5,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\MessageController;
+use App\Http\Controllers\BeritaController;
 use App\Http\Middleware\HasRoleAdminMiddleware;
 use App\Models\Berita;
 use App\Models\Podcast;
@@ -15,10 +17,9 @@ use app\Models\User;
 Route::get('/', [HomeController::class, 'index'])->name('index');
 
 // Route untuk halaman berita
-Route::get('/berita', function () {
-    $beritas = Berita::get();
-    return view('layanan/berita', compact('beritas'));
-});
+Route::get('/berita', [BeritaController::class, 'index'])->name('berita.index');
+Route::get('/berita/{id}', [BeritaController::class, 'show'])->name('berita.show');
+
 
 // Route untuk halaman radio
 Route::get('/radio', function () {
@@ -37,14 +38,22 @@ Route::get('/about', function () {
     return view('about');
 });
 
+// Route untuk pop up pesan
+Route::post('/', [MessageController::class, 'sendMessage'])->name('sendMessage');
+
 // Route untuk pencarian
 Route::get('/search', [SearchController::class, 'search']);
 
 // Route grup untuk admin dengan middleware auth dan HasRoleAdminMiddleware
 Route::prefix('admin')->middleware(['auth', HasRoleAdminMiddleware::class])->group(function () {
 
+    // Route untuk halaman admin dengan tabel user dan message
+    Route::get('/', [AdminController::class, 'indexUsersAndMessages'])->name('admin');
+
+    // Route untuk manajemen Pesan
+    Route::delete('/{id}', [AdminController::class, 'deleteMessage'])->name('deleteMessage');
+
     // Route untuk manajemen Pengguna
-    Route::get('/', [AdminController::class, 'indexUsers'])->name('admin');
     Route::get('/edit/user-modals/{id}', [AdminController::class, 'userModals'])->name('admin.edit_user_modals');
     Route::put('/edit/user-modals/{id}', [AdminController::class, 'updateUser'])->name('updateUser');
     Route::delete('/edit/user-modals/{id}', [AdminController::class, 'deleteUser'])->name('deleteUser');

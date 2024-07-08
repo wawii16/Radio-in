@@ -23,15 +23,14 @@
             <section class="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2">
                 @foreach ($beritas as $berita)
                 <div class="bg-emerald-700 text-white rounded-lg overflow-hidden shadow-lg">
-                    <a href="#">
+                    <a href="{{ route('berita.show', $berita->id) }}">
                         <img class="w-full h-64 object-cover" src="{{ url('/') }}/uploads/{{ $berita->photo }}" alt="News Image">
                     </a>
                     <div class="p-4">
-                        <h3 class="text-lg font-bold mb-2">{{ $berita->judul }}</h3>
-                        <p class="text-white font-semibold mb-3">25/06/2024</p>
-                        <p class="text-white mb-2">{{ $berita->deskripsi }}</p>
-                        <p class="text-white font-semibold">Referensi:</p>
-                        <p class="text-white font-semibold">CNN Indonesia</p>
+                        <h3 class="text-lg font-bold mb-4">{{ $berita->judul }}</h3>
+                        <p class="text-white font-semibold mb-5">{{ $berita->created_at->format('Y-m-d') }}</p>
+                        <p class="text-white mb-4">{{ $berita->deskripsi }}</p>
+                        <p class="text-white font-semibold">Sumber: {{ $berita->referensi }}</p>
                     </div>
                 </div>
                 @endforeach

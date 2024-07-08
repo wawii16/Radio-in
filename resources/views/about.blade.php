@@ -39,8 +39,8 @@
                     <!-- Team Member Card -->
                     <div class="bg-emerald-600 rounded-full p-4 flex items-center space-x-4">
                         <div class="flex-shrink-0">
-                            <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Team Member"
-                                class="h-16 w-16 rounded-full">
+                            <img src="teams/dwi.jpg" alt="Team Member"
+                                class="h-16 w-16 object-cover rounded-full">
                         </div>
                         <div>
                             <h2 class="text-lg font-semibold text-white">Dwi Wahyu Maulana</h2>

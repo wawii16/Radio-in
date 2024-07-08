@@ -39,6 +39,7 @@
                                 <th class="w-10 py-1 px-2 text-left text-xs sm:text-sm font-medium uppercase border-b border-neutral-800">No</th>
                                 <th class="py-1 px-2 text-left text-xs sm:text-sm font-medium uppercase border-b border-neutral-800">Nama Podcast</th>
                                 <th class="py-1 px-2 text-left text-xs sm:text-sm font-medium uppercase border-b border-neutral-800">Artis</th>
+                                <th class="py-1 px-2 text-left text-xs sm:text-sm font-medium uppercase border-b border-neutral-800">Stream URL</th>
                                 <th class="py-1 px-2 text-center text-xs sm:text-sm font-medium uppercase border-b border-neutral-800">Cover</th>
                                 <th class="py-1 px-2 text-center text-xs sm:text-sm font-medium uppercase border-b border-neutral-800">Aksi</th>
                             </tr>
@@ -50,13 +51,14 @@
                             @endphp
                             @foreach ($podcasts as $podcast)
                             <tr>
-                                <td class="w-10 py-1 px-2 text-xs sm:text-sm whitespace-nowrap border-b border-neutral-800">{{ $counter++ }}</td>
-                                <td class="py-1 px-2 text-xs sm:text-sm whitespace-nowrap border-b border-neutral-800">{{ $podcast->name }}</td>
-                                <td class="py-1 px-2 text-xs sm:text-sm whitespace-nowrap border-b border-neutral-800">{{ $podcast->artis }}</td>
-                                <td class="py-1 px-2 text-xs sm:text-sm whitespace-nowrap border-b border-neutral-800 text-center">
+                                <td class="w-10 py-1 px-2 text-xs sm:text-sm whitespace-wrap border-b border-neutral-800">{{ $counter++ }}</td>
+                                <td class="py-1 px-2 text-xs sm:text-sm whitespace-wrap border-b border-neutral-800">{{ $podcast->name }}</td>
+                                <td class="py-1 px-2 text-xs sm:text-sm whitespace-wrap border-b border-neutral-800">{{ $podcast->artis }}</td>
+                                <td class="py-1 px-2 text-xs sm:text-sm whitespace-wrap border-b border-neutral-800">{{ $podcast->url }}</td>
+                                <td class="py-1 px-2 text-xs sm:text-sm whitespace-wrap border-b border-neutral-800 text-center">
                                     <img class="w-10 h-10 sm:w-20 sm:h-20 object-cover" src="{{ url('/') }}/uploads/{{ $podcast->photo }}" alt="Gambar">
                                 </td>
-                                <td class="py-1 px-2 text-xs sm:text-sm whitespace-nowrap border-b border-neutral-800 text-center">
+                                <td class="py-1 px-2 text-xs sm:text-sm whitespace-wrap border-b border-neutral-800 text-center">
                                     <a href="{{ route('admin.edit_podcast', ['id' => $podcast->id]) }}" class="bg-emerald-600 hover:bg-emerald-800 text-white font-bold py-1 px-2 sm:py-1 sm:px-3 rounded">Lihat</a>
                                 </td>
                             </tr>

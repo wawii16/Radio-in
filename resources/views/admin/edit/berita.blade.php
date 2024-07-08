@@ -1,6 +1,7 @@
 <head>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 
 <body class="bg-gray-100">
@@ -15,14 +16,28 @@
                 <label for="judul" class="block mb-2 text-sm font-medium text-black">Judul Berita</label>
                 <input value="{{ old('judul', $berita->judul) }}" type="text" name="judul" id="judul"
                     class="bg-gray-100 border border-gray-300 text-black text-sm rounded-lg focus:ring-gray-600 focus:border-gray-600 block w-full p-2.5"
-                    placeholder="Type news title" required="">
+                    placeholder="Masukkan Judul Baru..." required="">
             </div>
             <div class="col-span-2">
                 <label for="deskripsi" class="block mb-2 text-sm font-medium text-black">Deskripsi</label>
                 <textarea name="deskripsi" id="deskripsi"
                     class="bg-gray-100 border border-gray-300 text-black text-sm rounded-lg focus:ring-gray-600 focus:border-gray-600 block w-full p-2.5"
-                    placeholder="Type news description" rows="4"
+                    placeholder="Masukkan Deskripsi Baru..." rows="4"
                     required="">{{ old('deskripsi', $berita->deskripsi) }}</textarea>
+            </div>
+            <div class="col-span-2">
+                <label for="isi" class="block mb-2 text-sm font-medium text-black">Isi</label>
+                <textarea name="isi" id="isi"
+                    class="bg-gray-100 border border-gray-300 text-black text-sm rounded-lg focus:ring-gray-600 focus:border-gray-600 block w-full p-2.5"
+                    placeholder="Masukkan Isi Baru..." rows="10"
+                    required="">{{ old('isi', $berita->isi) }}</textarea>
+            </div>
+            <div class="col-span-2">
+                <label for="referensi" class="block mb-2 text-sm font-medium text-black">Referensi</label>
+                <textarea name="referensi" id="referensi"
+                    class="bg-gray-100 border border-gray-300 text-black text-sm rounded-lg focus:ring-gray-600 focus:border-gray-600 block w-full p-2.5"
+                    placeholder="Masukkan referensi Baru..." rows="3"
+                    required="">{{ old('referensi', $berita->referensi) }}</textarea>
             </div>
             <div class="col-span-2">
                 @if ($berita->photo != "")
@@ -88,5 +103,13 @@
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+    <script>
+        tinymce.init({
+            selector: 'textarea#isi',
+            plugins: 'lists link image table',
+            toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | outdent indent | numlist bullist | link image table',
+            menubar: false
+        });
+    </script>
 
 </body>

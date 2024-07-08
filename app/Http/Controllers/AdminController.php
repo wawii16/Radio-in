@@ -7,6 +7,7 @@ use App\Models\Podcast;
 use Illuminate\Http\Request;
 use App\Models\Radio;
 use App\Models\User;
+use App\Models\Message;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 
@@ -15,11 +16,22 @@ use Auth;
 
 class AdminController extends Controller
 {
-    // Method untuk menampilkan halaman admin dengan tabel user
-    public function indexUsers()
+    // Method untuk menampilkan halaman admin dengan tabel user dan tabel pesan
+    public function indexUsersAndMessages()
     {
         $users = User::where('usertype', '!=', 'admin')->get();
-        return view('admin', compact('users'));
+        $messages = Message::all();
+
+        return view('admin', compact('users', 'messages'));
+    }
+
+    // Method untuk menghapus pesan
+    public function deleteMessage($id)
+    {
+        $message = Message::findOrFail($id);
+        $message->delete();
+
+        return redirect()->back()->with('success', 'Message deleted successfully.');
     }
 
     // Method untuk menampilkan modals update dan delete user
@@ -175,6 +187,8 @@ class AdminController extends Controller
         $berita = request()->validate([
             'judul' => 'required',
             'deskripsi' => 'required',
+            'isi' => 'required',
+            'referensi' => 'required',
             'photo' => 'required',
         ]);
 
@@ -182,6 +196,8 @@ class AdminController extends Controller
         $berita  = new Berita;
         $berita->judul = ($request->judul);
         $berita->deskripsi = ($request->deskripsi);
+        $berita->isi = ($request->isi);
+        $berita->referensi = ($request->referensi);
         $file = $request->file('photo');
         $file_name = time() . $file->getClientOriginalName();
 
@@ -208,12 +224,16 @@ class AdminController extends Controller
         $validatedData = $request->validate([
             'judul' => 'required',
             'deskripsi' => 'required',
+            'isi' => 'required',
+            'referensi' => 'required',
             'photo' => 'sometimes',
         ]);
 
         // Perbarui properti dari instance yang ditemukan
         $update->judul = $validatedData['judul'];
         $update->deskripsi = $validatedData['deskripsi'];
+        $update->isi = $validatedData['isi'];
+        $update->referensi = $validatedData['referensi'];
 
         if ($request->hasFile('photo')) {
             // Tangani file unggahan dan perbarui foto jika ada

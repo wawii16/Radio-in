@@ -37,6 +37,9 @@
                                 <th class="w-10 py-1 px-2 text-left text-xs sm:text-sm font-medium uppercase border-b border-neutral-800">No</th>
                                 <th class="py-1 px-2 text-left text-xs sm:text-sm font-medium uppercase border-b border-neutral-800">Judul Berita</th>
                                 <th class="py-1 px-2 text-left text-xs sm:text-sm font-medium uppercase border-b border-neutral-800">Deskripsi</th>
+                                <th class="py-1 px-2 text-left text-xs sm:text-sm font-medium uppercase border-b border-neutral-800">Isi</th>
+                                <th class="py-1 px-2 text-left text-xs sm:text-sm font-medium uppercase border-b border-neutral-800">Referensi</th>
+                                <th class="py-1 px-2 text-left text-xs sm:text-sm font-medium uppercase border-b border-neutral-800">Dibuat</th>
                                 <th class="py-1 px-2 text-center text-xs sm:text-sm font-medium uppercase border-b border-neutral-800">Cover</th>
                                 <th class="py-1 px-2 text-center text-xs sm:text-sm font-medium uppercase border-b border-neutral-800">Aksi</th>
                             </tr>
@@ -49,9 +52,12 @@
                             @foreach ($beritas as $berita)
                             <tr>
                                 <td class="w-10 py-1 px-2 text-xs sm:text-sm whitespace-nowrap border-b border-neutral-800">{{ $counter++ }}</td>
-                                <td class="py-1 px-2 text-xs sm:text-sm whitespace-nowrap border-b border-neutral-800">{{ $berita->judul }}</td>
-                                <td class="py-1 px-2 text-xs sm:text-sm whitespace-nowrap border-b border-neutral-800">{{ $berita->deskripsi }}</td>
-                                <td class="py-1 px-2 text-xs sm:text-sm whitespace-nowrap border-b border-neutral-800 text-center">
+                                <td class="py-1 px-2 text-xs sm:text-sm whitespace-wrap border-b border-neutral-800">{{ $berita->judul }}</td>
+                                <td class="py-1 px-2 text-xs sm:text-sm whitespace-wrap border-b border-neutral-800">{{ $berita->deskripsi }}</td>
+                                <td class="py-1 px-2 text-xs sm:text-sm whitespace-wrap border-b border-neutral-800">{{ $berita->isi }}</td>
+                                <td class="py-1 px-2 text-xs sm:text-sm whitespace-wrap border-b border-neutral-800">{{ $berita->referensi }}</td>
+                                <td class="py-1 px-2 text-xs sm:text-sm whitespace-wrap border-b border-neutral-800">{{ $berita->created_at->format('Y-m-d H:i:s') }}</td>
+                                <td class="py-1 px-2 text-xs sm:text-sm whitespace-wrap border-b border-neutral-800 text-center">
                                     <img class="w-10 h-10 sm:w-20 sm:h-20 object-cover" src="{{ url('/') }}/uploads/{{ $berita->photo }}" alt="Gambar">
                                 </td>
                                 <td class="py-1 px-2 text-xs sm:text-sm whitespace-nowrap border-b border-neutral-800 text-center">
@@ -88,22 +94,24 @@
                         <div class="grid gap-4 mb-4 grid-cols-2">
                             <div class="col-span-2">
                                 <label for="judul" class="block mb-2 text-sm font-medium text-black">Judul Berita</label>
-                                <input value="<?= old('judul') ?>" type="text" name="judul" id="judul" class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 " placeholder="Type product name" required="">
+                                <input value="<?= old('judul') ?>" type="text" name="judul" id="judul" class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 " placeholder="Masukkan Judul Berita..." required="">
                             </div>
                             <div class="col-span-2">
                                 <label for="deskripsi" class="block mb-2 text-sm font-medium text-black">Deskripsi</label>
-                                <textarea name="deskripsi" id="deskripsi" class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5" placeholder="Type description" required=""></textarea>
+                                <textarea name="deskripsi" id="deskripsi" class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5" placeholder="Masukkan Deskripsi Berita..." required=""></textarea>
+                            </div>
+                            <div class="col-span-2">
+                                <label for="isi" class="block mb-2 text-sm font-medium text-black">Isi</label>
+                                <textarea name="isi" id="isi" class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5" placeholder="Masukkan Isi Berita..." required="" rows="10"></textarea>
+                            </div>
+                            <div class="col-span-2">
+                                <label for="referensi" class="block mb-2 text-sm font-medium text-black">Referensi</label>
+                                <textarea name="referensi" id="referensi" class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5" placeholder="Masukkan Referensi Berita..." required=""></textarea>
                             </div>
                             <div class="col-span-2">
                                 <label class="block mb-2 text-sm font-medium text-black" for="file_input">Upload file</label>
                                 <input class="block w-full text-sm text-black border border-gray-300 rounded-lg cursor-pointer bg-white " id="file_input" type="file" accept=".png, .jpg, .jpeg" name="photo">
                             </div>
-
-                            <!-- <div class="col-span-2">
-                                <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Product Description</label>
-                                <textarea id="description" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write product description here"></textarea>
-                            </div> -->
-
                         </div>
                         <button type="submit" class=" text-white inline-flex items-center bg-emerald-700 hover:bg-emerald-800 focus:ring-4 focus:outline-none focus:ring-emerald-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                             <svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
