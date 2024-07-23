@@ -10,5 +10,26 @@
     ],
     "public": true,
     "buildCommand": "vite build",
-    "outputDirectory": "public"
+    "outputDirectory": "public",
+    "env": {
+        "APP_ENV": "production",
+        "APP_DEBUG": "false",
+        "APP_URL": "http://localhost",
+        "APP_KEY": "base64:wUF1epTUITT+73CZzbqbcGfKFh5Vj6WNnUpxGKYEeqY=",
+        "APP_CONFIG_CACHE": "/tmp/config.php",
+        "APP_EVENTS_CACHE": "/tmp/events.php",
+        "APP_PACKAGES_CACHE": "/tmp/packages.php",
+        "APP_ROUTES_CACHE": "/tmp/routes.php",
+        "APP_SERVICES_CACHE": "/tmp/services.php",
+        "VIEW_COMPILED_PATH": "/tmp",
+        "CACHE_DRIVER": "array",
+        "LOG_CHANNEL": "stderr",
+        "SESSION_DRIVER": "cookie",
+        "DB_CONNECTION": "mysql",
+        "DB_HOST": "tr9.h.filess.io",
+        "DB_PORT": "3307",
+        "DB_DATABASE": "Radioin_cameratask",
+        "DB_USERNAME": "Radioin_cameratask",
+        "DB_PASSWORD": "52d65b5480a1484af40f6fad82ba0eefde59b814"
+    }
 }
