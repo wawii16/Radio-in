@@ -8,6 +8,8 @@
         { "src": "/build/(.*)", "dest": "/public/build/" },
         { "src": "/images/(.*)", "dest": "/public/images/$1" },
         { "src": "/teams/(.*)", "dest": "/public/teams/$1" },
+        { "src": "/icons/(.*)", "dest": "/public/icons/$1" },
+        { "src": "/uploads/(.*)", "dest": "/public/uploads/$1" },
         { "src": "/(.*)", "dest": "/api/index.php" }
     ],
     "public": true,
