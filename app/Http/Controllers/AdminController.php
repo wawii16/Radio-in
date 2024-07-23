@@ -6,14 +6,74 @@ use App\Models\Berita;
 use App\Models\Podcast;
 use Illuminate\Http\Request;
 use App\Models\Radio;
+use App\Models\User;
+use App\Models\Message;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
 
 use Str;
-use Hash;
 use Auth;
 
 class AdminController extends Controller
 {
+    // Method untuk menampilkan halaman admin dengan tabel user dan tabel pesan
+    public function indexUsersAndMessages()
+    {
+        $users = User::where('usertype', '!=', 'admin')->get();
+        $messages = Message::all();
+
+        return view('admin', compact('users', 'messages'));
+    }
+
+    // Method untuk menghapus pesan
+    public function deleteMessage($id)
+    {
+        $message = Message::findOrFail($id);
+        $message->delete();
+
+        return redirect()->back()->with('success', 'Message deleted successfully.');
+    }
+
+    // Method untuk menampilkan modals update dan delete user
+    public function userModals($id)
+    {
+        $user = User::findOrFail($id);
+        return view('admin.edit.user-modals', compact('user'));
+    }
+
+    // Method untuk update user
+    public function updateUser(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email,' . $id,
+            'password' => 'nullable|string|min:8|confirmed',
+        ]);
+
+        $user->name = $validatedData['name'];
+        $user->email = $validatedData['email'];
+
+        if (!empty($validatedData['password'])) {
+            $user->password = Hash::make($validatedData['password']);
+        }
+
+        $user->save();
+
+        return redirect()->route('admin')->with('success', 'User updated successfully.');
+    }
+
+
+    // Method untuk delete user
+    public function deleteUser($id)
+    {
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        return redirect()->route('admin')->with('success', 'User deleted successfully.');
+    }
+
     public function radio()
     {
 
@@ -23,6 +83,7 @@ class AdminController extends Controller
 
         return view('admin/radio', compact('radios'));
     }
+
     public function store_radio(Request $request)
     {
         // dd($request->all());
@@ -44,8 +105,6 @@ class AdminController extends Controller
 
         $file->move($filePath, $file_name);
         $radio->photo = $file_name;
-
-
 
         $radio->save();
         return redirect('admin/radio');
@@ -110,6 +169,7 @@ class AdminController extends Controller
 
         return redirect('admin/radio');
     }
+
     public function berita()
     {
 
@@ -119,6 +179,7 @@ class AdminController extends Controller
 
         return view('admin/berita', compact('beritas'));
     }
+
     public function store_berita(Request $request)
     {
         // dd($request->all());
@@ -126,6 +187,8 @@ class AdminController extends Controller
         $berita = request()->validate([
             'judul' => 'required',
             'deskripsi' => 'required',
+            'isi' => 'required',
+            'referensi' => 'required',
             'photo' => 'required',
         ]);
 
@@ -133,6 +196,8 @@ class AdminController extends Controller
         $berita  = new Berita;
         $berita->judul = ($request->judul);
         $berita->deskripsi = ($request->deskripsi);
+        $berita->isi = ($request->isi);
+        $berita->referensi = ($request->referensi);
         $file = $request->file('photo');
         $file_name = time() . $file->getClientOriginalName();
 
@@ -159,12 +224,16 @@ class AdminController extends Controller
         $validatedData = $request->validate([
             'judul' => 'required',
             'deskripsi' => 'required',
+            'isi' => 'required',
+            'referensi' => 'required',
             'photo' => 'sometimes',
         ]);
 
         // Perbarui properti dari instance yang ditemukan
         $update->judul = $validatedData['judul'];
         $update->deskripsi = $validatedData['deskripsi'];
+        $update->isi = $validatedData['isi'];
+        $update->referensi = $validatedData['referensi'];
 
         if ($request->hasFile('photo')) {
             // Tangani file unggahan dan perbarui foto jika ada

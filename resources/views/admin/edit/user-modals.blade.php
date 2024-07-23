@@ -4,30 +4,27 @@
 </head>
 
 <body class="bg-gray-100">
-    <h1 class="text-emerald-700 text-2xl font-bold text-center mt-6">Form Edit Radio</h1>
+    <h1 class="text-emerald-700 text-2xl font-bold text-center mt-6">Form Edit User</h1>
 
-    <form action="{{ route('radioUpdate', $radio->id) }}" method="POST" enctype="multipart/form-data" class="max-w-md mx-auto bg-white p-6 rounded-lg shadow-lg mt-10">
+    <form action="{{ route('updateUser', ['id' => $user->id]) }}" method="POST" enctype="multipart/form-data" class="max-w-md mx-auto bg-white p-6 rounded-lg shadow-lg mt-10">
         @method('put')
         @csrf
         <div class="grid gap-4 mb-4">
             <div class="col-span-2">
-                <label for="name" class="block mb-2 text-sm font-medium text-black">Nama Radio</label>
-                <input value="{{ old('name', $radio->name) }}" type="text" name="name" id="name" class="bg-gray-100 border border-gray-300 text-black text-sm rounded-lg focus:ring-gray-600 focus:border-gray-600 block w-full p-2.5" placeholder="Masukkan nama radio..." required>
+                <label for="updateUserName" class="block text-sm font-medium text-gray-700">Name</label>
+                <input type="text" class="form-input mt-1 block w-full rounded-md bg-gray-100 border-gray-300 focus:border-emerald-500 focus:ring focus:ring-emerald-200 focus:ring-opacity-50" id="updateUserName" name="name" value="{{ $user->name }}" required>
             </div>
             <div class="col-span-2">
-                <label for="artis" class="block mb-2 text-sm font-medium text-black">Nama Artis</label>
-                <input value="{{ old('artis', $radio->artis) }}" type="text" name="artis" id="artis" class="bg-gray-100 border border-gray-300 text-black text-sm rounded-lg focus:ring-gray-600 focus:border-gray-600 block w-full p-2.5" placeholder="Masukkan nama artis..." required>
+                <label for="updateUserEmail" class="block text-sm font-medium text-gray-700">Email</label>
+                <input type="email" class="form-input mt-1 block w-full rounded-md bg-gray-100 border-gray-300 focus:border-emerald-500 focus:ring focus:ring-emerald-200 focus:ring-opacity-50" id="updateUserEmail" name="email" value="{{ $user->email }}" required>
             </div>
             <div class="col-span-2">
-                <label for="url" class="block mb-2 text-sm font-medium text-black">Url</label>
-                <input value="{{ old('url', $radio->url) }}" type="text" name="url" id="url" class="bg-gray-100 border border-gray-300 text-black text-sm rounded-lg focus:ring-gray-600 focus:border-gray-600 block w-full p-2.5" placeholder="Masukkan URL radio..." required>
+                <label for="updateUserPassword" class="block text-sm font-medium text-gray-700">Password (leave blank if not changing)</label>
+                <input type="password" class="form-input mt-1 block w-full rounded-md bg-gray-100 border-gray-300 focus:border-emerald-500 focus:ring focus:ring-emerald-200 focus:ring-opacity-50" id="updateUserPassword" name="password">
             </div>
             <div class="col-span-2">
-                @if ($radio->photo != "")
-                <img src="{{ url('/') }}/uploads/{{ $radio->photo }}" class="w-10 h-10 mb-2" alt="">
-                @endif
-                <label class="block mb-2 text-sm font-medium text-black" for="file_input">Upload file</label>
-                <input class="block w-full text-sm text-black border border-gray-300 rounded-lg cursor-pointer bg-gray-100 focus:outline-none" id="file_input" type="file" accept=".png, .jpg, .jpeg" name="photo">
+                <label for="updateUserPasswordConfirmation" class="block text-sm font-medium text-gray-700">Confirm Password</label>
+                <input type="password" class="form-input mt-1 block w-full rounded-md bg-gray-100 border-gray-300 focus:border-emerald-500 focus:ring focus:ring-emerald-200 focus:ring-opacity-50" id="updateUserPasswordConfirmation" name="password_confirmation">
             </div>
         </div>
         <div class="flex justify-start gap-2">
@@ -45,7 +42,7 @@
                     </svg>
                     <span class="sr-only">Close modal</span>
                 </button>
-                <form action="{{ route('radioDestroy', $radio->id) }}" method="post">
+                <form action="{{ route('deleteUser', $user->id) }}" method="post">
                     @method('delete')
                     @csrf
                     <div class="p-4 md:p-5 text-center">

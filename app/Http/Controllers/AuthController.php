@@ -14,10 +14,12 @@ class AuthController extends Controller
     {
         return view('auth/register');
     }
+
     public function login()
     {
         return view('auth/login');
     }
+
     public function registration_post(Request $request)
     {
         $user = request()->validate([
@@ -34,6 +36,7 @@ class AuthController extends Controller
         $user->save();
         return redirect('login')->with('success', 'Register Success');
     }
+
     public function login_post(Request $request)
     {
         $credentials = $request->validate([

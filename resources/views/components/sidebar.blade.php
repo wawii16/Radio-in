@@ -1,41 +1,41 @@
 <!-- Sidebar Component -->
-<aside id="sidebar" class="bg-neutral-900 min-h-screen w-64 md:w-56 transform md:translate-x-0 -translate-x-full fixed top-0 left-0 z-50 md:relative md:flex-shrink-0 transition-transform duration-300 ease-in-out">
+<aside id="sidebar" class="bg-gray-100 min-h-screen w-64 shadow-xl md:w-56 transform md:translate-x-0 -translate-x-full fixed top-0 left-0 z-50 md:relative md:flex-shrink-0 transition-transform duration-300 ease-in-out">
     <div class="flex flex-col h-full">
         <div class="flex items-center justify-center py-4 mb-3 mt-5">
             <div class="w-40 h-20">
-                <img class="w-full rounded-xl object-cover" src="{{ asset('logo.png') }}" alt="logo">
+                <img class="w-full rounded-xl object-cover" src="{{ asset('/images/logo-radioin.png') }}" alt="logo">
             </div>
         </div>
-        <nav class="text-white flex-1 mt-4">
+        <nav class="text-black flex-1 mt-12">
             <ul>
                 <li class="mb-2 flex items-center">
-                    <a href="/" class="w-full block py-2 px-4 hover:bg-gray-700 {{ request()->is('/') ? 'bg-yellow-300 text-black' : '' }}">
+                    <a href="/" class="w-full block py-2 px-4 hover:bg-emerald-600 hover:text-white {{ request()->is('/') ? 'bg-emerald-400 text-black' : '' }}">
                         <i class="fa-solid fa-house mr-3"></i>Beranda
                     </a>
                 </li>
                 <li class="mb-2 flex items-center">
-                    <a href="#" id="search-link" class="w-full block py-2 px-4 hover:bg-gray-700">
+                    <a href="#" id="search-link" class="w-full block py-2 px-4 hover:bg-emerald-600 hover:text-white">
                         <i class="fa-solid fa-magnifying-glass mr-3"></i>Cari
                     </a>
                 </li>
                 <li class="mb-2 flex items-center">
-                    <a href="/radio" class="w-full block py-2 px-4 hover:bg-gray-700 {{ request()->is('radio') ? 'bg-yellow-300 text-black' : '' }}">
+                    <a href="/radio" class="w-full block py-2 px-4 hover:bg-emerald-600 hover:text-white {{ request()->is('radio') ? 'bg-emerald-400 text-black' : '' }}">
                         <i class="fa-solid fa-radio mr-3"></i>Radio
                     </a>
                 </li>
                 <li class="mb-2 flex items-center">
-                    <a href="/podcast" class="w-full block py-2 px-4 hover:bg-gray-700 {{ request()->is('podcast') ? 'bg-yellow-300 text-black' : '' }}">
+                    <a href="/podcast" class="w-full block py-2 px-4 hover:bg-emerald-600 hover:text-white {{ request()->is('podcast') ? 'bg-emerald-400 text-black' : '' }}">
                         <i class="fa-solid fa-podcast mr-3"></i>Podcast
                     </a>
                 </li>
                 <li class="mb-2 flex items-center">
-                    <a href="/berita" class="w-full block py-2 px-4 hover:bg-gray-700 {{ request()->is('berita') ? 'bg-yellow-300 text-black' : '' }}">
+                    <a href="/berita" class="w-full block py-2 px-4 hover:bg-emerald-600 hover:text-white {{ request()->is('berita') ? 'bg-emerald-400 text-black' : '' }}">
                         <i class="fa-solid fa-newspaper mr-3"></i>Berita
                     </a>
                 </li>
                 @if(auth()->check() && auth()->user()->isAdmin())
                 <li class="mb-2 flex items-center">
-                    <a href="/admin" class="w-full block py-2 px-4 hover:bg-gray-700 {{ request()->is('admin') ? 'bg-yellow-300 text-black' : '' }}">
+                    <a href="/admin" class="w-full block py-2 px-4 hover:bg-emerald-600 hover:text-white {{ request()->is('admin') ? 'bg-emerald-400 text-black' : '' }}">
                         <i class="fa-solid fa-user-tie mr-3"></i>Admin
                     </a>
                 </li>
@@ -46,7 +46,7 @@
 </aside>
 
 <!-- Sidebar Toggle Button -->
-<button id="sidebarToggle" class="text-white text-xl md:hidden fixed top-4 left-6 z-50">
+<button id="sidebarToggle" class="text-black bg-white px-2 py-1 rounded-full text-xl md:hidden fixed top-4 left-6 z-50">
     <i class="fa-solid fa-bars"></i>
 </button>
 
