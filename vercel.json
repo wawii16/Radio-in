@@ -10,6 +10,7 @@
         { "src": "/teams/(.*)", "dest": "/public/teams/$1" },
         { "src": "/icons/(.*)", "dest": "/public/icons/$1" },
         { "src": "/uploads/(.*)", "dest": "/public/uploads/$1" },
+        { "src": "/js/(.*)", "dest": "/public/js/$1" },
         { "src": "/(.*)", "dest": "/api/index.php" }
     ],
     "public": true,
