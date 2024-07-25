@@ -55,6 +55,15 @@ return [
             'throw' => false,
         ],
 
+        'b2' => [
+            'driver' => 'b2',
+            'account_id' => env('B2_ACCOUNT_ID'),
+            'application_key' => env('B2_APPLICATION_KEY'),
+            'bucket' => env('B2_BUCKET'),
+            'url' => env('B2_URL'),
+            'visibility' => 'public',
+        ],
+
     ],
 
     /*

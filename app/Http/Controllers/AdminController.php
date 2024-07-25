@@ -117,13 +117,14 @@ class AdminController extends Controller
 
     public function updateRadio($id, Request $request)
     {
+        // Temukan entitas Radio berdasarkan ID
         $update = Radio::findOrFail($id);
 
         // Validasi data yang diterima dari request
         $validatedData = $request->validate([
             'name' => 'required',
             'artis' => 'required',
-            'photo' => 'sometimes',
+            'photo' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'url' => 'required',
         ]);
 
@@ -134,30 +135,25 @@ class AdminController extends Controller
 
         if ($request->hasFile('photo')) {
             // Tangani file unggahan dan perbarui foto jika ada
-            $filePath = public_path('uploads');
             $file = $request->file('photo');
-            $file_name = time() . $file->getClientOriginalName();
-
-            // Pindahkan file ke folder uploads
-            $file->move($filePath, $file_name);
+            $file_name = time() . '_' . $file->getClientOriginalName();
+            $file_path = $file->storeAs('uploads', $file_name, 'public');
 
             // Hapus foto lama jika ada
             if (!is_null($update->photo)) {
-                $oldImage = public_path('uploads/' . $update->photo);
-                if (File::exists($oldImage)) {
-                    unlink($oldImage);
-                }
+                // Hapus file dari storage
+                Storage::disk('public')->delete($update->photo);
             }
 
             // Perbarui kolom foto
-            $update->photo = $file_name;
+            $update->photo = $file_path;
         }
 
         // Simpan perubahan
         $update->save();
 
-        // Redirect ke halaman partner
-        return redirect('admin/radio');
+        // Redirect ke halaman radio
+        return redirect()->route('admin.radio')->with('success', 'Radio updated successfully.');
     }
 
     public function deleteRadio($id)
