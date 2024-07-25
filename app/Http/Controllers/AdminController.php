@@ -86,28 +86,27 @@ class AdminController extends Controller
 
     public function store_radio(Request $request)
     {
-        // dd($request->all());
-
-        $radio = request()->validate([
+        $validatedData = $request->validate([
             'name' => 'required',
             'artis' => 'required',
-            'photo' => 'required',
+            'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'url' => 'required',
         ]);
 
-        $filePath = public_path('uploads');
-        $radio  = new Radio;
-        $radio->name = ($request->name);
-        $radio->artis = ($request->artis);
-        $radio->url = ($request->url);
-        $file = $request->file('photo');
-        $file_name = time() . $file->getClientOriginalName();
+        $radio = new Radio;
+        $radio->name = $request->name;
+        $radio->artis = $request->artis;
+        $radio->url = $request->url;
 
-        $file->move($filePath, $file_name);
-        $radio->photo = $file_name;
+        if ($request->hasFile('photo')) {
+            $file = $request->file('photo');
+            $file_name = time() . '_' . $file->getClientOriginalName();
+            $file_path = $file->storeAs('uploads', $file_name, 'public');
+            $radio->photo = $file_path;
+        }
 
         $radio->save();
-        return redirect('admin/radio');
+        return redirect()->route('admin.radio')->with('success', 'Radio added successfully.');
     }
 
     public function formRadio($id)
