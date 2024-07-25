@@ -29,6 +29,16 @@
             </button>
         </div>
 
+        @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                <span class="text-red-600 text-md">{{ $error }}</span>
+                @endforeach
+            </ul>
+        </div>
+        @endif
+
         <main class="max-w-full mt-3 mx-3 p-5 bg-emerald-800 text-white rounded-lg shadow overflow-hidden">
             <section class="mb-6">
                 <h2 class="text-lg font-semibold mb-5">Daftar Radio</h2>
@@ -128,4 +138,5 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 
 </body>
+
 </html>
