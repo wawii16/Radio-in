@@ -103,11 +103,6 @@ class AdminController extends Controller
             $file_name = time() . '_' . $file->getClientOriginalName();
             $file_path = $file->storeAs('uploads', $file_name, 'public');
             $radio->photo = $file_path;
-
-            // Debugging: Check if file exists
-            if (!Storage::disk('public')->exists($file_path)) {
-                return back()->withErrors(['photo' => 'File upload failed.']);
-            }
         }
 
         $radio->save();
